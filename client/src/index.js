@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   withRouter
 } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
@@ -51,7 +50,7 @@ class App extends React.Component {
         this.setState({
             settings: {...this.state.settings, ...settings}
         })
-        localStorage.setItem("settings", JSON.stringify(settings))
+        localStorage.setItem("settings", JSON.stringify(this.state.settings))
     }
 
     handleSocketStatus(status) {

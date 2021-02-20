@@ -5,10 +5,13 @@ import Entry from "./entry.js"
 
 export default function Chat(props) {
     const style = {
-        height: "100%",
+        flexGrow: 1,
+        flexShrink: 1,
+        minHeight: "0px",
         display: "flex",
         flexDirection: "column"
     }
+
     return (
         <div style={style}>
             <Messages messages={props.messages} />

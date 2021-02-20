@@ -42,12 +42,14 @@ export default function Header(props) {
                     <span>React Chatroom</span>
                 </Link>
             </div>
+
             <h3 style={statusStyle}>
                 {props.socketStatus} as&nbsp;
                 <span style={{color: props.settings.color}}>
                     {props.settings.nickname}
                 </span>
             </h3>
+
             <div style={{textAlign: "center", flexGrow: 1}}>
                 <NavLink
                     to="/"

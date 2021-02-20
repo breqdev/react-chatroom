@@ -5,7 +5,6 @@ export default class Entry extends React.Component {
         super(props)
         this.state = {value: ''}
         this.textbox = React.createRef()
-        this.button = React.createRef()
 
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
