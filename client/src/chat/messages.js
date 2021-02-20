@@ -1,11 +1,14 @@
-import React from 'react'
-import Twemoji from 'twemoji'
+import React from "react"
+import Twemoji from "twemoji"
+import tinycolor from "tinycolor2"
 
 function Message(props) {
     const li_style = {
         listStyleType: "none",
         marginBottom: "10px"
     }
+
+    const color = tinycolor(props.message.color)
 
     const author_style = {
         border: "1px solid #000",
@@ -14,6 +17,7 @@ function Message(props) {
         padding: "0 5px",
         textAlign: "center",
         fontWeight: "bold",
+        color: color.isLight() ? "#000" : "#FFF",
         backgroundColor: props.message.color
     }
 

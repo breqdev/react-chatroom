@@ -1,12 +1,19 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  withRouter
+} from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import Mousetrap from "mousetrap"
 
-import Messages from "./messages.js"
 import Settings from "./settings.js"
-import Entry from "./entry.js"
+import Chat from "./chat"
 import Header from "./header.js"
+import About from "./about.js"
 import ChatSocket from "./socket.js"
 import "./index.css"
 
@@ -37,18 +44,12 @@ class App extends React.Component {
         )
 
         this.handleSend = this.handleSend.bind(this)
-        this.handleOpenSettings = this.handleOpenSettings.bind(this)
-        this.handleCloseSettings = this.handleCloseSettings.bind(this)
+        this.handleSettings = this.handleSettings.bind(this)
     }
 
-    handleOpenSettings() {
-        this.setState({ showSettings: true })
-    }
-
-    handleCloseSettings(settings) {
+    handleSettings(settings) {
         this.setState({
-            showSettings: false,
-            settings: settings
+            settings: {...this.state.settings, ...settings}
         })
         localStorage.setItem("settings", JSON.stringify(settings))
     }
@@ -82,32 +83,47 @@ class App extends React.Component {
         return (
             <div style={styles}>
                 <Header
-                    onSettings={this.handleOpenSettings}
                     socketStatus={this.state.socketStatus}
                     settings={this.state.settings}
                 />
-                <Messages messages={this.state.messages}/>
-                <Entry onSend={this.handleSend}/>
-                <Settings
-                    settings={this.state.settings}
-                    show={this.state.showSettings}
-                    onClose={this.handleCloseSettings}
-                />
+                <Switch>
+                    <Route exact path="/">
+                        <Chat
+                            messages={this.state.messages}
+                            onSend={this.handleSend}
+                        />
+                    </Route>
+                    <Route path="/settings">
+                        <Settings
+                            settings={this.state.settings}
+                            onChange={this.handleSettings}
+                        />
+                    </Route>
+                    <Route path="/about">
+                        <About />
+                    </Route>
+                </Switch>
             </div>
         )
     }
 
     componentDidMount() {
         this.socket.connect()
-        Mousetrap.bind("ctrl+,", this.handleOpenSettings)
+        Mousetrap.bind("ctrl+,", () => this.props.history.push("/settings"))
+        Mousetrap.bind("esc", () => this.props.history.push("/"), "keyup")
     }
 
     componentWillUnmount() {
-        Mousetrap.bind("ctrl+,")
+        Mousetrap.unbind("ctrl+,")
+        Mousetrap.unbind("esc")
     }
 }
 
+const AppWithRouter = withRouter(App)
+
 ReactDOM.render(
-    <App />,
+    <Router>
+        <AppWithRouter />
+    </Router>,
     document.getElementById('root')
 )

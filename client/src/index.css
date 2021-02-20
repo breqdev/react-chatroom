@@ -10,3 +10,9 @@ img.emoji {
    margin: 0 .05em 0 .1em;
    vertical-align: -0.1em;
 }
+
+@media only screen and (max-width: 767px) {
+    .header {
+        flex-direction: column;
+    }
+}
