@@ -17,7 +17,7 @@
     "ws": "^7.4.3"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.1.2"
   },
   "type": "module"
 }
