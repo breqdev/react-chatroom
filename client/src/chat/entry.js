@@ -19,31 +19,38 @@ export default function Entry(props) {
         setValue("")
     }
 
-    const div_styles = {
+    const divStyle = {
         width: "100%",
         padding: "10px"
     }
-    const remove_outline = {
+    const inputStyle = {
         outline: "none",
-        boxShadow: "none"
+        boxShadow: "none",
+        flexGrow: 1
+    }
+    const buttonStyle = {
+        outline: "none",
+        boxShadow: "none",
+        marginLeft: "10px",
+        flexGrow: 0
     }
 
     return (
-        <div style={div_styles}>
+        <div style={divStyle}>
             <form onSubmit={handleSubmit}>
-                <div className="input-group mb3">
+                <div style={{display: "flex"}}>
                     <input
                         type="text"
                         value={value}
                         onChange={handleChange}
-                        className="form-control mousetrap"
-                        style={remove_outline}
+                        className="input mousetrap"
+                        style={inputStyle}
                         ref={textbox}
                     />
                     <button
                         type="submit"
-                        className="btn btn-outline-secondary active"
-                        style={remove_outline}>
+                        className="button is-primary"
+                        style={buttonStyle}>
                         <i className="fas fa-paper-plane"></i>
                     </button>
                 </div>

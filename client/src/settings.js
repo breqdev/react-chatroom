@@ -26,13 +26,13 @@ export default function Settings(props) {
 
     return (
         <div style={flexbox}>
-            <div className="input-group mb3" style={inputGroup}>
-                <span className="input-group-text">Nickname</span>
+            <div style={inputGroup}>
+                <label className="label">Nickname</label>
                 <input
                     type="text"
                     value={props.settings.nickname}
                     onChange={handleNicknameChange}
-                    className="form-control mousetrap"
+                    className="input mousetrap"
                 />
             </div>
             <div style={{ marginBottom: "20px" }}>
@@ -44,7 +44,7 @@ export default function Settings(props) {
             </div>
             <Link
                 to="/"
-                className="btn btn-outline-primary"
+                className="button is-primary"
             >
                 Save
             </Link>

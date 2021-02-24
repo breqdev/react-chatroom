@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom"
 
 export default function Header(props) {
     const backgroundStyle = {
-        backgroundColor: "#F4F1DE",
         color: "#000000",
         padding: "10px",
         fontFamily: "Ubuntu",
@@ -31,12 +30,8 @@ export default function Header(props) {
         padding: "10px",
     }
 
-    const activeIconStyle = {
-        color: "#A8D0DB"
-    }
-
     return (
-        <div style={backgroundStyle} className="header">
+        <div style={backgroundStyle} className="header has-background-primary">
             <div style={{flexGrow: 1000}}>
                 <Link to="/" style={titleStyle}>
                     <span>React Chatroom</span>
@@ -55,19 +50,19 @@ export default function Header(props) {
                     to="/"
                     exact
                     style={iconStyle}
-                    activeStyle={activeIconStyle}>
+                    activeClassName="has-text-light">
                     <i className="far fa-comments" />
                 </NavLink>
                 <NavLink
                     to="/settings"
                     style={iconStyle}
-                    activeStyle={activeIconStyle}>
+                    activeClassName="has-text-light">
                     <i className="fas fa-cog" />
                 </NavLink>
                 <NavLink
                     to="/about"
                     style={iconStyle}
-                    activeStyle={activeIconStyle}>
+                    activeClassName="has-text-light">
                     <i className="far fa-question-circle" />
                 </NavLink>
             </div>
