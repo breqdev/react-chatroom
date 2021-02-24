@@ -1,7 +1,7 @@
 export default class ChatSocket {
-    constructor(messageCallback, statusCallback) {
-        this.messageCallback = messageCallback
-        this.statusCallback = statusCallback
+    constructor(props) {
+        this.messageCallback = props.messageCallback
+        this.statusCallback = props.statusCallback
         this.ws = null
 
         this.connect = this.connect.bind(this)

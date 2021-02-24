@@ -34,37 +34,35 @@ function Message(props) {
     )
 }
 
-export default class Messages extends React.Component {
-    constructor(props) {
-        super(props)
-        this.messagesEnd = React.createRef()
+export default function Messages(props) {
+    let messagesEnd = React.useRef(null)
+
+    React.useEffect(() => {
+        if (messagesEnd.current) {
+            messagesEnd.current.scrollIntoView({behavior: "smooth"})
+        }
+    })
+
+    const style = {
+        flexGrow: 1,
+        minHeight: 0,
+        fontFamily: "Lato",
+        padding: "10px",
+        fontSize: 16,
+        overflowY: "scroll",
     }
 
-    render() {
-        const style = {
-            flexGrow: 1,
-            minHeight: 0,
-            fontFamily: "Lato",
-            padding: "10px",
-            fontSize: 16,
-            overflowY: "scroll",
-        }
-
-        let messages = []
-        for (let index in this.props.messages) {
-            messages.push(
-                <Message message={this.props.messages[index]} key={index} />
-            )
-        }
-        return (
-            <ul style={style}>
-                {messages}
-                <div ref={this.messagesEnd}></div>
-            </ul>
+    let messages = []
+    for (let index in props.messages) {
+        messages.push(
+            <Message message={props.messages[index]} key={index} />
         )
     }
 
-    componentDidUpdate(prevProps, prevState, snapsnot) {
-        this.messagesEnd.current.scrollIntoView({behavior: "smooth"})
-    }
+    return (
+        <ul style={style}>
+            {messages}
+            <div ref={messagesEnd}></div>
+        </ul>
+    )
 }
