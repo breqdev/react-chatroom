@@ -49,7 +49,7 @@ function App(props) {
 
     const [socketStatus, setSocketStatus] = React.useState("not connected")
 
-    const [socket, setSocket] = React.useState(
+    const [socket, ] = React.useState(
         new ChatSocket({statusCallback: setSocketStatus}))
 
     React.useEffect(() => {
@@ -58,12 +58,12 @@ function App(props) {
         return function() {
             socket.close()
         }
-    }, [])
+    }, [socket])
 
     React.useEffect(() => {
         socket.messageCallback = (
             (message) => setMessages(messages.concat([message])))
-    }, [messages])
+    }, [socket, messages])
 
     function handleSend(message) {
         socket.send({
