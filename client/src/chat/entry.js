@@ -49,7 +49,7 @@ export default function Entry(props) {
                     />
                     <button
                         type="submit"
-                        className="button is-primary"
+                        className="button is-info"
                         style={buttonStyle}>
                         <i className="fas fa-paper-plane"></i>
                     </button>

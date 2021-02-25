@@ -3,6 +3,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&amp;display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&amp;display=swap");
 
+$brand-pink: #FF1B8D;
+$brand-blue: #1BB3FF;
+
+$family-sans-serif: "Lato";
+
+$primary: $brand-pink;
+$info: $brand-blue;
+
 @import "../node_modules/bulma/bulma.sass";
 
 html, body, #root {
