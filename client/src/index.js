@@ -14,8 +14,7 @@ import Chat from "./chat"
 import Header from "./header.js"
 import About from "./about.js"
 import ChatSocket from "./socket.js"
-import "./index.css"
-
+import "./index.scss"
 
 function useSettings(defaultSettings) {
     const [settings, setSettings] = React.useState(defaultSettings)

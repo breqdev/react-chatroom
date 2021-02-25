@@ -1,3 +1,10 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&amp;display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&amp;display=swap");
+
+@import "../node_modules/bulma/bulma.sass";
+
 html, body, #root {
   height: 100%;
   margin: 0;
