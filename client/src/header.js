@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, NavLink } from "react-router-dom"
+import Badge from "./badge.js"
 
 export default function Header(props) {
     const backgroundStyle = {
@@ -40,9 +41,10 @@ export default function Header(props) {
 
             <h3 style={statusStyle}>
                 {props.socketStatus} as&nbsp;
-                <span style={{color: props.settings.color}}>
-                    {props.settings.nickname}
-                </span>
+                <Badge
+                    color={props.settings.color}
+                    name={props.settings.nickname}
+                />
             </h3>
 
             <div style={{textAlign: "center", flexGrow: 1}}>

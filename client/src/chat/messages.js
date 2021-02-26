@@ -1,6 +1,6 @@
 import React from "react"
 import Twemoji from "twemoji"
-import tinycolor from "tinycolor2"
+import Badge from "../badge.js"
 
 function Message(props) {
     const li_style = {
@@ -8,28 +8,16 @@ function Message(props) {
         marginBottom: "10px"
     }
 
-    const color = tinycolor(props.message.color)
-
-    const author_style = {
-        border: "1px solid #000",
-        marginRight: "10px",
-        display: "inline-block",
-        padding: "0 5px",
-        textAlign: "center",
-        fontWeight: "bold",
-        color: color.isLight() ? "#000" : "#FFF",
-        backgroundColor: props.message.color
-    }
-
     let content = props.message.content
     content = Twemoji.parse(content)
 
     return (
         <li style={li_style}>
-            <span style={author_style}>
-                {props.message.nickname}
-            </span>
-            <span dangerouslySetInnerHTML={{__html: content}}></span>
+            <Badge color={props.message.color} name={props.message.nickname} />
+            <span
+                style={{marginLeft: "10px"}}
+                dangerouslySetInnerHTML={{__html: content}}
+            ></span>
         </li>
     )
 }
