@@ -20,5 +20,8 @@
   "devDependencies": {
     "concurrently": "^4.1.2"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": "16.x"
+  }
 }
