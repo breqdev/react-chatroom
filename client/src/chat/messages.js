@@ -14,10 +14,7 @@ function Message(props) {
     return (
         <li style={li_style}>
             <Badge color={props.message.color} name={props.message.nickname} />
-            <span
-                style={{marginLeft: "10px"}}
-                dangerouslySetInnerHTML={{__html: content}}
-            ></span>
+            <span style={{marginLeft: "10px"}}>{content}</span>
         </li>
     )
 }
